@@ -64,27 +64,30 @@
 	
 	var _ContactList_ListView2 = _interopRequireDefault(_ContactList_ListView);
 	
-	var _ContactList_SingleView = __webpack_require__(237);
+	var _ContactList_SingleView = __webpack_require__(238);
 	
 	var _ContactList_SingleView2 = _interopRequireDefault(_ContactList_SingleView);
 	
-	var _people = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"data/people\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	
-	var _people2 = _interopRequireDefault(_people);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(238);
+	__webpack_require__(239);
 	
 	// Layouts
 	
-	// Data 
+	
+	// UI
+	
 	
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
 	  { history: _reactRouter.hashHistory },
-	  _react2.default.createElement(_reactRouter.Route, { component: _app2.default })
-	), document.getElementById('App'));
+	  _react2.default.createElement(
+	    _reactRouter.Route,
+	    { component: _app2.default },
+	    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _ContactList_ListView2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/contact/:id', component: _ContactList_SingleView2.default })
+	  )
+	), document.getElementById('app'));
 
 /***/ },
 /* 1 */
@@ -27121,10 +27124,6 @@
 	
 	var _reactRouter = __webpack_require__(172);
 	
-	var _ContactList_ListView = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"ContactList_ListView\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
-	
-	var _ContactList_ListView2 = _interopRequireDefault(_ContactList_ListView);
-	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = _react2.default.createClass({
@@ -27160,7 +27159,7 @@
 	
 	var _reactRouter = __webpack_require__(172);
 	
-	var _people = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"data/people\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _people = __webpack_require__(237);
 	
 	var _people2 = _interopRequireDefault(_people);
 	
@@ -27180,11 +27179,21 @@
 					_react2.default.createElement(
 						'div',
 						{ id: 'users' },
-						_react2.default.createElement('img', { id: 'userpic', src: '' }),
+						_react2.default.createElement('i', { className: 'fa fa-user', 'aria-hidden': 'true' }),
 						_react2.default.createElement(
-							'li',
-							{ className: 'name' },
-							this.people.name
+							'ul',
+							null,
+							_people2.default.people.map(function (person) {
+								return _react2.default.createElement(
+									'li',
+									{ key: person.id, className: 'name' },
+									_react2.default.createElement(
+										_reactRouter.Link,
+										{ to: "/contact/" + person.id },
+										person.name
+									)
+								);
+							})
 						)
 					)
 				)
@@ -27194,6 +27203,75 @@
 
 /***/ },
 /* 237 */
+/***/ function(module, exports) {
+
+	module.exports = {
+		"people": [
+			{
+				"id": 1,
+				"name": "Dustin",
+				"email": "drudyprop@gmail.com",
+				"phone": "702-523-8481",
+				"location": "Las Vegas, NV",
+				"picture": {
+					"large": "https://randomuser.me/api/portraits/men/12.jpg",
+					"medium": "https://randomuser.me/api/portraits/med/men/12.jpg",
+					"thumbnail": "https://randomuser.me/api/portraits/thumb/men/12.jpg"
+				}
+			},
+			{
+				"id": 2,
+				"name": "Ryan",
+				"email": "drudyprop@gmail.com",
+				"phone": "702-523-8481",
+				"location": "Miami, FL",
+				"picture": {
+					"large": "https://randomuser.me/api/portraits/men/39.jpg",
+					"medium": "https://randomuser.me/api/portraits/med/men/39.jpg",
+					"thumbnail": "https://randomuser.me/api/portraits/thumb/men/39.jpg"
+				}
+			},
+			{
+				"id": 3,
+				"name": "Jason",
+				"email": "drudyprop@gmail.com",
+				"phone": "702-523-8481",
+				"location": "San Diego, CA",
+				"picture": {
+					"large": "https://randomuser.me/api/portraits/men/74.jpg",
+					"medium": "https://randomuser.me/api/portraits/med/men/74.jpg",
+					"thumbnail": "https://randomuser.me/api/portraits/thumb/men/74.jpg"
+				}
+			},
+			{
+				"id": 4,
+				"name": "Tim",
+				"email": "drudyprop@gmail.com",
+				"phone": "702-523-8481",
+				"location": "Washington DC",
+				"picture": {
+					"large": "https://randomuser.me/api/portraits/men/62.jpg",
+					"medium": "https://randomuser.me/api/portraits/med/men/62.jpg",
+					"thumbnail": "https://randomuser.me/api/portraits/thumb/men/62.jpg"
+				}
+			},
+			{
+				"id": 5,
+				"name": "Carrie",
+				"email": "drudyprop@gmail.com",
+				"phone": "702-523-8481",
+				"location": "Fishers, IN",
+				"picture": {
+					"large": "https://randomuser.me/api/portraits/women/86.jpg",
+					"medium": "https://randomuser.me/api/portraits/med/women/86.jpg",
+					"thumbnail": "https://randomuser.me/api/portraits/thumb/women/86.jpg"
+				}
+			}
+		]
+	};
+
+/***/ },
+/* 238 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -27208,7 +27286,7 @@
 	
 	var _reactRouter = __webpack_require__(172);
 	
-	var _people = __webpack_require__(!(function webpackMissingModule() { var e = new Error("Cannot find module \"data/people\""); e.code = 'MODULE_NOT_FOUND'; throw e; }()));
+	var _people = __webpack_require__(237);
 	
 	var _people2 = _interopRequireDefault(_people);
 	
@@ -27217,19 +27295,66 @@
 	exports.default = _react2.default.createClass({
 		displayName: 'ContactList_SingleView',
 	
+		getInitialState: function getInitialState() {
+			return {
+				name: '',
+				email: '',
+				phone: '',
+				location: ''
+			};
+		},
+		componentWillMount: function componentWillMount() {
+			var id = this.props.params.id;
+	
+			var Person = _people2.default.people.filter(function (person) {
+				return person.id == id;
+			})[0];
+	
+			this.setState({
+				name: Person.name,
+				email: Person.email,
+				phone: Person.phone,
+				location: Person.location
+			});
+		},
 		render: function render() {
 			return _react2.default.createElement(
 				'div',
 				{ id: 'container' },
-				_people2.default.map(function (person) {
-					'<div id="users">\n\t\t\t\t\t\t<p className="name"' + this.people.name + '></p>\n\t\t\t\t\t\t<p className="email"' + this.people.email + '></p>\n\t\t\t\t\t\t<p className="phone"' + this.people.phone + '></p>\n\t\t\t\t\t\t<p className="location"' + this.people.location + '></p>\n\t\t\t\t\t</div>';
-				})
+				_react2.default.createElement(
+					'div',
+					{ id: 'users' },
+					_react2.default.createElement(
+						'p',
+						{ className: 'name' },
+						this.state.name,
+						'>'
+					),
+					_react2.default.createElement(
+						'p',
+						{ className: 'email' },
+						this.state.email,
+						'>'
+					),
+					_react2.default.createElement(
+						'p',
+						{ className: 'phone' },
+						this.state.phone,
+						'>'
+					),
+					_react2.default.createElement(
+						'p',
+						{ className: 'location' },
+						this.state.location,
+						'>'
+					)
+				)
 			);
 		}
 	});
 
 /***/ },
-/* 238 */
+/* 239 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin

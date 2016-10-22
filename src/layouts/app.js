@@ -1,6 +1,5 @@
 import React from 'react';
 import { Link } from 'react-router';
-import ContactList_View from 'ContactList_ListView'
 
 export default React.createClass({
   render: function() {
