@@ -70,7 +70,7 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	__webpack_require__(239);
+	__webpack_require__(247);
 	
 	// Layouts
 	
@@ -27179,7 +27179,6 @@
 					_react2.default.createElement(
 						'div',
 						{ id: 'users' },
-						_react2.default.createElement('i', { className: 'fa fa-user', 'aria-hidden': 'true' }),
 						_react2.default.createElement(
 							'ul',
 							null,
@@ -27190,7 +27189,16 @@
 									_react2.default.createElement(
 										_reactRouter.Link,
 										{ to: "/contact/" + person.id },
-										person.name
+										_react2.default.createElement('img', { className: 'thumbnail', src: person.thumbnail }),
+										_react2.default.createElement(
+											'div',
+											{ className: 'name__container' },
+											_react2.default.createElement(
+												'p',
+												{ className: 'names' },
+												person.name
+											)
+										)
 									)
 								);
 							})
@@ -27213,11 +27221,9 @@
 				"email": "drudyprop@gmail.com",
 				"phone": "702-523-8481",
 				"location": "Las Vegas, NV",
-				"picture": {
-					"large": "https://randomuser.me/api/portraits/men/12.jpg",
-					"medium": "https://randomuser.me/api/portraits/med/men/12.jpg",
-					"thumbnail": "https://randomuser.me/api/portraits/thumb/men/12.jpg"
-				}
+				"large": "https://randomuser.me/api/portraits/men/12.jpg",
+				"medium": "https://randomuser.me/api/portraits/med/men/12.jpg",
+				"thumbnail": "https://randomuser.me/api/portraits/thumb/men/12.jpg"
 			},
 			{
 				"id": 2,
@@ -27225,11 +27231,9 @@
 				"email": "drudyprop@gmail.com",
 				"phone": "702-523-8481",
 				"location": "Miami, FL",
-				"picture": {
-					"large": "https://randomuser.me/api/portraits/men/39.jpg",
-					"medium": "https://randomuser.me/api/portraits/med/men/39.jpg",
-					"thumbnail": "https://randomuser.me/api/portraits/thumb/men/39.jpg"
-				}
+				"large": "https://randomuser.me/api/portraits/men/39.jpg",
+				"medium": "https://randomuser.me/api/portraits/med/men/39.jpg",
+				"thumbnail": "https://randomuser.me/api/portraits/thumb/men/39.jpg"
 			},
 			{
 				"id": 3,
@@ -27237,11 +27241,9 @@
 				"email": "drudyprop@gmail.com",
 				"phone": "702-523-8481",
 				"location": "San Diego, CA",
-				"picture": {
-					"large": "https://randomuser.me/api/portraits/men/74.jpg",
-					"medium": "https://randomuser.me/api/portraits/med/men/74.jpg",
-					"thumbnail": "https://randomuser.me/api/portraits/thumb/men/74.jpg"
-				}
+				"large": "https://randomuser.me/api/portraits/men/74.jpg",
+				"medium": "https://randomuser.me/api/portraits/med/men/74.jpg",
+				"thumbnail": "https://randomuser.me/api/portraits/thumb/men/74.jpg"
 			},
 			{
 				"id": 4,
@@ -27249,11 +27251,9 @@
 				"email": "drudyprop@gmail.com",
 				"phone": "702-523-8481",
 				"location": "Washington DC",
-				"picture": {
-					"large": "https://randomuser.me/api/portraits/men/62.jpg",
-					"medium": "https://randomuser.me/api/portraits/med/men/62.jpg",
-					"thumbnail": "https://randomuser.me/api/portraits/thumb/men/62.jpg"
-				}
+				"large": "https://randomuser.me/api/portraits/men/62.jpg",
+				"medium": "https://randomuser.me/api/portraits/med/men/62.jpg",
+				"thumbnail": "https://randomuser.me/api/portraits/thumb/men/62.jpg"
 			},
 			{
 				"id": 5,
@@ -27261,11 +27261,9 @@
 				"email": "drudyprop@gmail.com",
 				"phone": "702-523-8481",
 				"location": "Fishers, IN",
-				"picture": {
-					"large": "https://randomuser.me/api/portraits/women/86.jpg",
-					"medium": "https://randomuser.me/api/portraits/med/women/86.jpg",
-					"thumbnail": "https://randomuser.me/api/portraits/thumb/women/86.jpg"
-				}
+				"large": "https://randomuser.me/api/portraits/women/86.jpg",
+				"medium": "https://randomuser.me/api/portraits/med/women/86.jpg",
+				"thumbnail": "https://randomuser.me/api/portraits/thumb/women/86.jpg"
 			}
 		]
 	};
@@ -27290,6 +27288,10 @@
 	
 	var _people2 = _interopRequireDefault(_people);
 	
+	var _fontAwesome = __webpack_require__(239);
+	
+	var _fontAwesome2 = _interopRequireDefault(_fontAwesome);
+	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
 	exports.default = _react2.default.createClass({
@@ -27300,7 +27302,8 @@
 				name: '',
 				email: '',
 				phone: '',
-				location: ''
+				location: '',
+				large: ''
 			};
 		},
 		componentWillMount: function componentWillMount() {
@@ -27314,39 +27317,49 @@
 				name: Person.name,
 				email: Person.email,
 				phone: Person.phone,
-				location: Person.location
+				location: Person.location,
+				large: Person.large
 			});
 		},
 		render: function render() {
 			return _react2.default.createElement(
 				'div',
-				{ id: 'container' },
+				{ id: 'container2' },
 				_react2.default.createElement(
 					'div',
-					{ id: 'users' },
+					{ className: 'header' },
+					_react2.default.createElement('img', { className: 'profile', src: this.state.large })
+				),
+				_react2.default.createElement(
+					'div',
+					{ id: 'user' },
 					_react2.default.createElement(
 						'p',
-						{ className: 'name' },
-						this.state.name,
-						'>'
+						{ className: 'text' },
+						_react2.default.createElement('i', { className: 'fa fa-user', 'aria-hidden': 'true' }),
+						'\xA0\xA0',
+						this.state.name
 					),
 					_react2.default.createElement(
 						'p',
-						{ className: 'email' },
-						this.state.email,
-						'>'
+						{ className: 'text' },
+						_react2.default.createElement('i', { className: 'fa fa-envelope', 'aria-hidden': 'true' }),
+						'\xA0\xA0',
+						this.state.email
 					),
 					_react2.default.createElement(
 						'p',
-						{ className: 'phone' },
-						this.state.phone,
-						'>'
+						{ className: 'text' },
+						_react2.default.createElement('i', { className: 'fa fa-mobile', 'aria-hidden': 'true' }),
+						'\xA0\xA0',
+						this.state.phone
 					),
 					_react2.default.createElement(
 						'p',
-						{ className: 'location' },
-						this.state.location,
-						'>'
+						{ className: 'text' },
+						_react2.default.createElement('i', { className: 'fa fa-globe', 'aria-hidden': 'true' }),
+						'\xA0\xA0',
+						this.state.location
 					)
 				)
 			);
@@ -27355,6 +27368,19 @@
 
 /***/ },
 /* 239 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
+
+/***/ },
+/* 240 */,
+/* 241 */,
+/* 242 */,
+/* 243 */,
+/* 244 */,
+/* 245 */,
+/* 246 */,
+/* 247 */
 /***/ function(module, exports) {
 
 	// removed by extract-text-webpack-plugin
