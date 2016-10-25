@@ -2220,8 +2220,22 @@ li {
   margin-top: 15px;
   list-style-type: none;
   text-decoration: none;
-  padding-left: 0px;
-  padding-bottom: 20px; }
+  padding-left: 10px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  color: #333333; }
+
+li:hover {
+  border-bottom: 1px solid white;
+  margin-top: 15px;
+  list-style-type: none;
+  text-decoration: none;
+  padding-left: 10px;
+  padding-bottom: 20px;
+  padding-top: 10px;
+  background-color: #81BC39;
+  color: white;
+  transition: background-color 0.5s; }
 
 a {
   text-decoration: none;
@@ -2233,7 +2247,7 @@ a {
 .names {
   display: inline;
   border-bottom: none;
-  margin: 0px 13px 13px;
+  margin-left: 13px;
   line-height: 50px;
   height: 50px; }
 
@@ -2243,7 +2257,7 @@ a {
 .name__container {
   margin-bottom: 20px;
   display: inline;
-  height: 50px; }
+  line-height: 50px; }
 
 i {
   margin-left: 10px;
@@ -2257,6 +2271,15 @@ p {
   width: 500px;
   padding-bottom: 15px; }
 
+i.fa-arrow-left {
+  color: white;
+  font-size: 30px; }
+
+i.fa-arrow-left:hover {
+  color: white;
+  font-size: 30px;
+  cursor: pointer; }
+
 .header {
   width: 500px;
   height: 200px;
@@ -2265,7 +2288,7 @@ p {
 .profile {
   border-radius: 100%;
   width: 150px;
-  margin-left: 175px;
+  margin-left: 135px;
   margin-top: 35px; }
 
 .text {

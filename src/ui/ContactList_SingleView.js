@@ -1,13 +1,14 @@
 import React from 'react';
-import { Link } from 'react-router';
-import People from 'data/people.json';
+import { Link, hashHistory } from 'react-router';
+import { getContact } from 'API/contacts'
 import Icons from 'font-awesome/css/font-awesome.css'
 
 
-export default React.createClass({
+const ContactViewContainer = React.createClass({
 	getInitialState: function () {
 		return {
-			name:'',
+			fname:'',
+			lname:'',
 			email:'',
 			phone:'',
 			location:'',
@@ -17,29 +18,42 @@ export default React.createClass({
 	componentWillMount: function(){
 		var id = this.props.params.id
 
-		var Person = People.people.filter(function(person){
-			return person.id == id
-		})[0]
-
-		this.setState({
-			name:Person.name,
-			email: Person.email,
-			phone: Person.phone,
-			location: Person.location,
-			large: Person.large
+		getContact(id).then(resp => {
+			this.setState({
+			fname: resp.data.fname,
+			lname: resp.data.lname,
+			email: resp.data.email,
+			phone: resp.data.phone,
+			location: resp.data.location,
+			large: resp.data.large
 		})
+	})	
 	},
 	render: function(){
 		return (
-			<div id="container2">
-				<div className="header"><img className="profile" src={this.state.large}/></div>
+			<ContactView contact={this.state}/>
+		)
+	}
+})
+
+const ContactView = React.createClass({
+	goBack: function() {
+		hashHistory.goBack()
+	},
+	render: function(){
+		return (
+			<div className="container">
+				<div className="header"><i onClick={this.goBack} className="fa fa-arrow-left" aria-hidden="true"></i><img className="profile" src={this.props.contact.large}/></div>
 				<div id="user">
-					<p className="text"><i className="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;{this.state.name}</p>
-					<p className="text"><i className="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;{this.state.email}</p>
-					<p className="text"><i className="fa fa-mobile" aria-hidden="true"></i>&nbsp;&nbsp;{this.state.phone}</p>
-					<p className="text"><i className="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;{this.state.location}</p>
+					<p className="text"><i className="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;{this.props.contact.fname} {this.props.contact.lname}</p>
+					<p className="text"><i className="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;{this.props.contact.email}</p>
+					<p className="text"><i className="fa fa-mobile" aria-hidden="true"></i>&nbsp;&nbsp;{this.props.contact.phone}</p>
+					<p className="text"><i className="fa fa-globe" aria-hidden="true"></i>&nbsp;&nbsp;{this.props.contact.location}</p>
 				</div>
 			</div>	
 		)
 	}
 })
+
+export default ContactViewContainer
+
