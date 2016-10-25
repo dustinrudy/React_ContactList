@@ -23,15 +23,19 @@ const CreateUserContainer = React.createClass({
 })
 
 const CreateUser = React.createClass({
+	createContact: function(){
+
+	},
 	render: function() {
 		return (
 			<form>
-				<input type="text"></input>
-				<input type="text"></input>
-				<input type="email"></input>
-				<input type="tel"></input>
-				<input type="text"></input>
-				<button>Sumbit</button>
+				<label name="First Name"><input type="text" name="fname" placeholder="John"></input></label>
+				<label name="Last Name"><input type="text" name="lname" placeholder="Doe"></input></label>
+				<label name="Email"><input type="email" name="email" placeholder="john.doe@gmail.com"></input></label>
+				<label name="Phone"><input type="tel" name="phone" placeholder="702-233-9930"></input></label>
+				<label name="City, State"><input type="text" name="location" placeholder="Henderson, NV"></input></label>
+				<input type="file" name="thumbnail" accept="images/*"></input>
+				<button className="submitbutton" formMethod="post" formAction="http://localhost:8001/contacts/" type="submit">Sumbit</button>
 			</form>
 		)
 	}

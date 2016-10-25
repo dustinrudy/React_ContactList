@@ -127,3 +127,20 @@ i.fa-arrow-left:hover {
     font-family: Helvetica;
     font-weight: bold;
 }
+
+input {
+	display: block;
+	margin-top: 30px;
+	width: 230px;
+	height: 30px;
+	font-size: 16px;
+}
+
+.submitbutton {
+	margin-top: 10px;
+	background-color: #A7D076;
+	color: white;
+	font-family: Helvetica;
+	border-radius: 3px;
+	width: 100px;
+}

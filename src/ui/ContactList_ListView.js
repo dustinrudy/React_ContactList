@@ -28,7 +28,7 @@ const ContactListContainer = React.createClass({
 
 const ContactList = React.createClass({
 	deleteContact: function(e){
-		var id = e.target.substr(1)
+		var id = e.target.id.substr(1)
 		deleteContact(id).then(resp => {
 		this.props.rerender()
 		})

@@ -27200,7 +27200,7 @@
 		deleteContact: function deleteContact(e) {
 			var _this2 = this;
 	
-			var id = e.target.substr(1);
+			var id = e.target.id.substr(1);
 			(0, _contacts.deleteContact)(id).then(function (resp) {
 				_this2.props.rerender();
 			});
@@ -28572,18 +28572,40 @@
 	var CreateUser = _react2.default.createClass({
 		displayName: 'CreateUser',
 	
+		createContact: function createContact() {},
 		render: function render() {
 			return _react2.default.createElement(
 				'form',
 				null,
-				_react2.default.createElement('input', { type: 'text' }),
-				_react2.default.createElement('input', { type: 'text' }),
-				_react2.default.createElement('input', { type: 'email' }),
-				_react2.default.createElement('input', { type: 'tel' }),
-				_react2.default.createElement('input', { type: 'text' }),
+				_react2.default.createElement(
+					'label',
+					{ name: 'First Name' },
+					_react2.default.createElement('input', { type: 'text', name: 'fname', placeholder: 'John' })
+				),
+				_react2.default.createElement(
+					'label',
+					{ name: 'Last Name' },
+					_react2.default.createElement('input', { type: 'text', name: 'lname', placeholder: 'Doe' })
+				),
+				_react2.default.createElement(
+					'label',
+					{ name: 'Email' },
+					_react2.default.createElement('input', { type: 'email', name: 'email', placeholder: 'john.doe@gmail.com' })
+				),
+				_react2.default.createElement(
+					'label',
+					{ name: 'Phone' },
+					_react2.default.createElement('input', { type: 'tel', name: 'phone', placeholder: '702-233-9930' })
+				),
+				_react2.default.createElement(
+					'label',
+					{ name: 'City, State' },
+					_react2.default.createElement('input', { type: 'text', name: 'location', placeholder: 'Henderson, NV' })
+				),
+				_react2.default.createElement('input', { type: 'file', name: 'thumbnail', accept: 'images/*' }),
 				_react2.default.createElement(
 					'button',
-					null,
+					{ className: 'submitbutton', formMethod: 'post', formAction: 'http://localhost:8001/contacts/', type: 'submit' },
 					'Sumbit'
 				)
 			);
