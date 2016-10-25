@@ -14,6 +14,6 @@ export function deleteContact(id) {
 	return axios.delete(`contacts/${id}`)
 }
 
-export function createContact() {
-	return axios.put(`contacts`)
+export function createContact(contact) {
+	return axios.post(`contacts`, contact)
 }

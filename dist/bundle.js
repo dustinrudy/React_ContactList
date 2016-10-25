@@ -27243,7 +27243,7 @@
 									),
 									_react2.default.createElement(
 										'button',
-										{ id: 'd' + person.id, onClick: _this3.deleteContact },
+										{ className: 'delete', id: 'd' + person.id, onClick: _this3.deleteContact },
 										'DELETE'
 									)
 								);
@@ -27304,8 +27304,8 @@
 		return _axios2.default.delete('contacts/' + id);
 	}
 	
-	function createContact() {
-		return _axios2.default.put('contacts');
+	function createContact(contact) {
+		return _axios2.default.post('contacts', contact);
 	}
 
 /***/ },
@@ -28550,69 +28550,97 @@
 	
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 	
-	var CreateUserContainer = _react2.default.createClass({
-		displayName: 'CreateUserContainer',
+	var CreateUser = _react2.default.createClass({
+		displayName: 'CreateUser',
 	
 		getInitialState: function getInitialState() {
 			return {
-				"name": "",
+				"fname": "",
+				"lname": "",
 				"email": "",
 				"phone": "",
 				"location": "",
 				"large": "",
-				"thumbnail": "",
-				"medium": ""
+				"medium": "",
+				"thumbnail": ""
 			};
 		},
-		render: function render() {
-			return _react2.default.createElement(CreateUser, { contact: this.state });
-		}
-	});
+		update: function update(e) {
+			var newState = this.state;
 	
-	var CreateUser = _react2.default.createClass({
-		displayName: 'CreateUser',
+			newState[e.target.name] = e.target.value;
 	
-		createContact: function createContact() {},
+			this.setState(newState);
+			console.log(newState);
+		},
+		createUser: function createUser(e) {
+			e.preventDefault();
+	
+			var obj = {
+				"fname": this.state.fname,
+				"lname": this.state.lname,
+				"email": this.state.email,
+				"phone": this.state.phone,
+				"location": this.state.location,
+				"large": this.state.large,
+				"medium": this.state.medium,
+				"thumbnail": this.state.thumbnail
+			};
+	
+			(0, _contacts.createContact)(obj).then(function () {
+				_reactRouter.hashHistory.push('/');
+			});
+		},
 		render: function render() {
 			return _react2.default.createElement(
 				'form',
-				null,
+				{ onSubmit: this.createUser },
 				_react2.default.createElement(
 					'label',
 					{ name: 'First Name' },
-					_react2.default.createElement('input', { type: 'text', name: 'fname', placeholder: 'John' })
+					'First Name'
 				),
+				_react2.default.createElement('input', { onChange: this.update, type: 'text', name: 'fname', value: this.state.fname, placeholder: 'John' }),
 				_react2.default.createElement(
 					'label',
 					{ name: 'Last Name' },
-					_react2.default.createElement('input', { type: 'text', name: 'lname', placeholder: 'Doe' })
+					'Last Name'
 				),
+				_react2.default.createElement('input', { onChange: this.update, type: 'text', name: 'lname', value: this.state.lname, placeholder: 'Doe' }),
 				_react2.default.createElement(
 					'label',
 					{ name: 'Email' },
-					_react2.default.createElement('input', { type: 'email', name: 'email', placeholder: 'john.doe@gmail.com' })
+					'Email'
 				),
+				_react2.default.createElement('input', { onChange: this.update, type: 'email', name: 'email', value: this.state.email, placeholder: 'john.doe@gmail.com' }),
 				_react2.default.createElement(
 					'label',
 					{ name: 'Phone' },
-					_react2.default.createElement('input', { type: 'tel', name: 'phone', placeholder: '702-233-9930' })
+					'Phone'
 				),
+				_react2.default.createElement('input', { onChange: this.update, type: 'tel', name: 'phone', value: this.state.phone, placeholder: '702-233-9930' }),
 				_react2.default.createElement(
 					'label',
 					{ name: 'City, State' },
-					_react2.default.createElement('input', { type: 'text', name: 'location', placeholder: 'Henderson, NV' })
+					'Location'
 				),
-				_react2.default.createElement('input', { type: 'file', name: 'thumbnail', accept: 'images/*' }),
+				_react2.default.createElement('input', { onChange: this.update, type: 'text', name: 'location', value: this.state.location, placeholder: 'Henderson, NV' }),
+				_react2.default.createElement(
+					'label',
+					{ name: 'Upload Profile Pic' },
+					'Upload Profile Picture'
+				),
+				_react2.default.createElement('input', { onChange: this.update, type: 'file', name: 'thumbnail', accept: 'images/*' }),
 				_react2.default.createElement(
 					'button',
-					{ className: 'submitbutton', formMethod: 'post', formAction: 'http://localhost:8001/contacts/', type: 'submit' },
+					{ type: 'submit' },
 					'Sumbit'
 				)
 			);
 		}
 	});
 	
-	exports.default = CreateUserContainer;
+	exports.default = CreateUser;
 
 /***/ },
 /* 265 */

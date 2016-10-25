@@ -43,24 +43,6 @@
       "large": "https://randomuser.me/api/portraits/women/86.jpg",
       "medium": "https://randomuser.me/api/portraits/med/women/86.jpg",
       "thumbnail": "https://randomuser.me/api/portraits/thumb/women/86.jpg"
-    },
-    {
-      "fname": "Jason",
-      "lname": "Shabo",
-      "email": "jshab@69.com",
-      "phone": "696-696-6969",
-      "location": "San Diego, CA",
-      "thumbnail": "djson.jpg",
-      "id": 6
-    },
-    {
-      "fname": "Thomas",
-      "lname": "Shannon",
-      "email": "shannon@shannon.com",
-      "phone": "702-323-4234",
-      "location": "Las Vegas, CA",
-      "thumbnail": "IMG_5206.JPG",
-      "id": 7
     }
   ]
 }

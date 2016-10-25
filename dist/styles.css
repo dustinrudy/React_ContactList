@@ -2193,7 +2193,7 @@
   overflow: visible;
   clip: auto; }
 #container {
-  width: 1300px; }
+  width: 500px; }
 
 #title {
   padding-left: 25px;
@@ -2210,7 +2210,8 @@
   margin-top: 40px;
   font-size: 16px;
   color: #333333;
-  padding-left: 0px; }
+  padding-left: 0px;
+  width: 450px; }
 
 ul {
   padding-left: 0px; }
@@ -2224,18 +2225,6 @@ li {
   padding-bottom: 20px;
   padding-top: 10px;
   color: #333333; }
-
-li:hover {
-  border-bottom: 1px solid white;
-  margin-top: 15px;
-  list-style-type: none;
-  text-decoration: none;
-  padding-left: 10px;
-  padding-bottom: 20px;
-  padding-top: 10px;
-  background-color: #81BC39;
-  color: white;
-  transition: background-color 0.5s; }
 
 a {
   text-decoration: none;
@@ -2299,10 +2288,17 @@ i.fa-arrow-left:hover {
 
 input {
   display: block;
-  margin-top: 30px;
+  margin-top: 10px;
+  margin-bottom: 10px;
   width: 230px;
   height: 30px;
-  font-size: 16px; }
+  font-size: 16px;
+  font-family: Helvetica;
+  font-weight: bold; }
+
+label {
+  font-family: Helvetica;
+  font-weight: bold; }
 
 .submitbutton {
   margin-top: 10px;
@@ -2310,6 +2306,64 @@ input {
   color: white;
   font-family: Helvetica;
   border-radius: 3px;
-  width: 100px; }
+  width: 100px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  outline: none; }
+
+.newuser {
+  margin-top: 10px;
+  background-color: #A7D076;
+  color: white;
+  font-family: Helvetica;
+  border-radius: 3px;
+  width: 150px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  outline: none;
+  font-size: 16px;
+  text-align: center;
+  float: right; }
+
+.newuser:active {
+  margin-top: 10px;
+  background-color: #A7D076;
+  color: white;
+  font-family: Helvetica;
+  border-radius: 3px;
+  width: 150px;
+  border-left: none;
+  border-right: none;
+  border-top: none;
+  border-bottom: none;
+  outline: none;
+  font-size: 16px;
+  text-align: center;
+  float: right; }
+
+.delete {
+  background-color: red;
+  color: white;
+  width: 70px;
+  height: 30px;
+  font-family: Helvetica;
+  float: right;
+  margin-top: 20px;
+  font-weight: bold;
+  border: none;
+  transition: background-color .5s; }
+
+.delete:hover {
+  background-color: white;
+  color: red;
+  width: 70px;
+  height: 30px;
+  font-family: Helvetica;
+  float: right;
+  margin-top: 20px;
+  font-weight: bold;
+  border: none; }
 
 /*# sourceMappingURL=bundle.map*/
